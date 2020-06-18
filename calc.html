@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>계산기 만들기</title>
+<style type="text/css">
+table {
+	border: 1px solid #adadad;
+	border-radius: 10px;
+	background-color: #adadad;
+}
+
+td {
+	padding: 5px 10px;
+	text-align: center;
+	border-radius: 100px;
+	font-weight: bold;
+}
+
+td#sic {
+	background-color: #363636;
+	color: #ffffff;
+	border: 3px solid #363636;
+}
+
+td#num {
+	background-color: #ff950a;
+	color: #ffffff;
+	border: 3px solid #ff950a;
+}
+
+td#tt {
+	border: 2px solid #363636;
+}
+
+input {
+	border: none;
+	text-align: right;
+}
+
+input:focus {
+	outline: none;
+}
+</style>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td id="tt" colspan="4"><input type="text" id="display"
+				style="background-color: #adadad"></td>
+		</tr>
+		<tr>
+			<td id="tt" colspan="4"><input type="text" id="result"
+				style="background-color: #adadad"></td>
+		</tr>
+		<tr>
+			<td colspan="3" onclick="reset()" id="sic">AC</td>
+			<td onclick="add('/')" id="sic">/</td>
+		</tr>
+		<tr>
+			<td onclick="add('7')" id="num">7</td>
+			<td onclick="add('8')" id="num">8</td>
+			<td onclick="add('9')" id="num">9</td>
+			<td onclick="add('*')" id="sic">*</td>
+		</tr>
+		<tr>
+			<td onclick="add('4')" id="num">4</td>
+			<td onclick="add('5')" id="num">5</td>
+			<td onclick="add('6')" id="num">6</td>
+			<td onclick="add('-')" id="sic">-</td>
+		</tr>
+		<tr>
+			<td onclick="add('1')" id="num">1</td>
+			<td onclick="add('2')" id="num">2</td>
+			<td onclick="add('3')" id="num">3</td>
+			<td onclick="add('+')" id="sic">+</td>
+		</tr>
+		<tr>
+			<td colspan="2" onclick="add('0')" id="num">0</td>
+			<td onclick="add('.')" id="sic">.</td>
+			<td onclick="calculate()" id="sic">=</td>
+		</tr>
+	</table>
+
+	<script>
+function add(char){
+	var display = document.getElementById('display');
+	display.value = display.value + char;
+}
+
+function calculate(){
+	var display = document.getElementById('display');
+	var result = eval(display.value);
+	document.getElementById('result').value = result;
+}
+
+function reset(){
+	document.getElementById('display').value = "";
+	document.getElementById('result').value = "";	
+}
+
+</script>
+</body>
+</html>
